@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+
+    <link rel="stylesheet" href="css/amazeui.min.css">
+    <link rel="stylesheet" href="css/admin.css">
+    <link rel="stylesheet" href="css/app.css">
+</head>
+
+<body>
+
+<div class="am-cf admin-main" >
+    <!-- content start -->
+    <div class="admin-content">
+        <div class="admin-content-body">
+
+            <div class="container" style="padding: 50px 10px 0px 10px">
+                <div class="am-g">
+                    <div class="am-u-sm-12 am-u-md-6">
+                        <div class="am-btn-toolbar">
+                            <div class="am-btn-group am-btn-group-xs">
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="am-u-sm-12 am-u-md-3">
+
+
+                        <div class="am-selected am-dropdown " id="am-selected-dhh2q" data-am-dropdown="">
+                            <div class="am-selected-content am-dropdown-content">
+                                <h2 class="am-selected-header"><span class="am-icon-chevron-left">返回</span></h2>
+                                <ul class="am-selected-list">
+
+                                </ul>
+                                <div class="am-selected-hint"></div>
+                            </div>
+                        </div>
+                        <div class="am-selected am-dropdown " id="am-selected-z6ofo" data-am-dropdown="">
+
+                            <div class="am-selected-content am-dropdown-content">
+                                <h2 class="am-selected-header">
+
+                                </h2>
+                                <ul class="am-selected-list">
+
+                                </ul>
+                                <div class="am-selected-hint"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="am-u-sm-12 am-u-md-3">
+                        <div class="am-input-group am-input-group-sm">
+                        </div>
+                    </div>
+                </div>
+                <div class="am-g" style="margin-top: -30px;">
+                    <div class="am-u-sm-12">
+                        <form class="am-form" action="">
+                            <table class="am-table am-table-striped am-table-hover table-main">
+                                <thead>
+                                <tr>
+                                    <th class="table-check">
+
+                                    </th>
+                                    <th class="table-id" style="width: 130px">
+                                        状态
+                                    </th>
+                                    <th>
+                                        主题
+                                    </th>
+                                    <th class="table-title">
+                                        姓名
+                                    </th>
+                                    <th>
+
+                                    </th>
+                                    <th>
+                                        部门名称
+                                    </th>
+                                    <th>
+                                        发起时间
+                                    </th>
+                                    <th class="table-set">
+                                        操作
+                                    </th>
+                                </tr>
+                                </thead>
+                                <tbody id="tUser"><
+                                <tr>
+                                    <td></td>
+                                    <td>null</td>
+                                    <td>null</td>
+                                    <td>
+                                        <a href="#">null</a>
+                                    </td>
+                                    <td><textarea style="display: none">1312</textarea></td>
+                                    <td>null</td>
+                                    <td>null</td>
+                                    <td>
+                                        <div class="am-btn-toolbar">
+                                            <div class="am-btn-group am-btn-group-xs">
+                                                <button type="button" class="am-btn am-btn-default am-btn-xs am-text-secondary btnEdit"><span class="am-icon-pencil-square-o"></span> 编辑</button>
+                                                <button type="button" class="am-btn am-btn-default am-btn-xs am-text-danger am-hide-sm-only" onclick="delUser(1,1)"><span class="am-icon-trash-o"></span> 驳回</button>
+                                                <button class="mtb" name="">移交</button>
+                                                <button class="pas" name="">允许</button>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <!-- content end -->
+    </div>
+</div>
+
+<!--[if lt IE 9]>
+<script src="http://libs.baidu.com/jquery/1.11.3/jquery.min.js"></script>
+<script src="http://cdn.staticfile.org/modernizr/2.8.3/modernizr.js"></script>
+<script src="assets/js/amazeui.ie8polyfill.min.js"></script>
+<![endif]-->
+
+<!--[if (gte IE 9)|!(IE)]><!-->
+<script src="js/jquery-1.11.3.min.js"></script>
+<!--<![endif]-->
+<script type="text/javascript" src="myplugs/js/plugs.js"></script>
+<script type="text/javascript" src="js/loginstate.js"></script>
+<script>
+    $(function() {
+        $.ajax({
+            type: "POST",
+            url: "/message/approval",
+            dataType: "json",
+            success: function (data) {
+                var dataObj = data;
+                con = "";
+                var nowstate="";
+                $.each(dataObj, function(index, item){
+                    switch(item.mState)
+                    {
+                        case 1:
+                            nowstate="管理处理中";
+                            break;
+                        case 2:
+                            nowstate="老板处理中";
+                            break;
+                        case 3:
+                            nowstate="管理允许";
+                            break;
+                        case 4:
+                            nowstate="移交给老板";
+                            break;
+                        case 5:
+                            nowstate="老板允许";
+                            break;
+                        case -1:
+                            nowstate="管理驳回";
+                            break;
+                        case -2:
+                            nowstate="老板驳回";
+                            break;
+                        default:
+                            nowstate="未知"
+                    }
+                    con += "<tr>" +
+                        "<td></td>" +
+                        "<td>"+nowstate+"</td>" +
+                        "<td>"+item.mTitle+"</td><td>" +
+                        "<a href=\"#\">"+item.mName+"</a></td>" +
+                        "<td><textarea id=\""+item.mId+"\" style=\"display: none\" >"+item.mData+"</textarea></td>" +
+                        "<td>"+item.mDepartment+"</td>" +
+                        "<td>"+item.mTime+"</td>" +
+                        "<td><div class=\"am-btn-toolbar\"><div class=\"am-btn-group am-btn-group-xs\"><button type=\"button\" name=\""+item.mId+"\" class=\"am-btn am-btn-default am-btn-xs am-text-secondary btnEdit\"><span class=\"am-icon-pencil-square-o\"></span> 查看</button><button name=\""+item.mId+"\" type=\"button\" class=\"am-btn am-btn-default am-btn-xs am-text-danger am-hide-sm-only nopas\"><span class=\"am-icon-trash-o\"></span> 驳回</button></div></div>" +
+                        "<button class=\"mtb\" name=\""+item.mId+"\">移交</button>" +
+                        "<button class=\"pas\" name=\""+item.mId+"\">允许</button></td></tr>"
+
+                });
+                $("#tUser").html(con);
+
+                $(".nopas").on("click",function() {
+                    var s=$(this).attr("name")
+                    console.log(s)
+                    $.ajax({
+                        type: "POST",
+                        url: "/message/nopas",
+                        data:{mid:s},
+                        dataType: "json",
+                        success: function (data) {}
+                    })
+
+                });
+
+                $(".mtb").on("click",function() {
+                    var s=$(this).attr("name")
+                    console.log(s)
+                    $.ajax({
+                        type: "POST",
+                        url: "/message/mtb",
+                        data:{mid:s},
+                        dataType: "json",
+                        success: function (data) {}
+                    })
+
+                });
+                $(".pas").on("click",function() {
+                    var s=$(this).attr("name")
+                    console.log(s)
+                    $.ajax({
+                        type: "POST",
+                        url: "/message/pas",
+                        data:{mid:s},
+                        dataType: "json",
+                        success: function (data) {}
+                    })
+
+                });
+
+                $(".btnEdit").on("click",function() {
+                    var mid=$(this).attr("name");
+                    $.jq_Panel({
+                        title: "查看内容",
+                        content:$("#"+mid).val(),
+                        iframeWidth: 400,
+                        iframeHeight: 300
+                    });
+
+                });
+            }
+        });
+
+    });
+</script>
+</body>
+
+</html>

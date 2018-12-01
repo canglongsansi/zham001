@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <script src="js/jquery-1.11.3.min.js"></script>
+    <script type="text/javascript" src="js/loginstate.js"></script>
+</head>
+
+<body>
+<div style="text-align: center">
+    <br/><br/><br/><br/><br/><br/><input id="title" type="text" value="" size="60" Maxlength="100"><br/><br/><br/>
+    <textarea id="msgdata" style="width:500px; height:300px"></textarea><br/><br/><br/>
+    <button id="btn1">按钮</button>
+</div>
+</body>
+<script>
+    $(function () {
+        $("#btn1").on('click',function () {
+            var title=$("#title").val();
+            var msgdata=$("#msgdata").val();
+            $.ajax({
+                type: "POST",
+                url: "/message/add",
+                data:{title:title,msgdata:msgdata},
+                dataType: "json",
+                statusCode:{
+                    200:function () {
+                        alert("成功")
+                        // $(location).attr('href', 'index.html');
+                    },
+                    400:function () {
+                        alert("账号或密码错误")
+                    }
+                }
+            })
+        })
+    })
+</script>
+</html>
