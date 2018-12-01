@@ -16,6 +16,6 @@ public class ArtistBrokerageContractController {
     private ArtistBrokerageContractService artistBrokerageContractService;
     @RequestMapping(value = "/ArtistBrokerageContract",method = RequestMethod.POST)
     public ResponseEntity getArtistBrokerageContract(){
-        return new ResponseEntity(artistBrokerageContractService.queryAll(), HttpStatus.OK);
+        return new ResponseEntity(artistBrokerageContractService.queryVo(), HttpStatus.OK);
     }
 }

@@ -16,6 +16,6 @@ public class ThreePartyContractController {
     private ThreePartyContractService threePartyContractService;
     @RequestMapping(value = "/ThreePartyContract",method = RequestMethod.POST)
     public ResponseEntity getThreePartyContract(){
-        return new ResponseEntity(threePartyContractService.queryAll(), HttpStatus.OK);
+        return new ResponseEntity(threePartyContractService.queryVo(), HttpStatus.OK);
     }
 }

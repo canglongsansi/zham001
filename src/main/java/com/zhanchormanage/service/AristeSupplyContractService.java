@@ -11,8 +11,8 @@ import java.util.List;
 public class AristeSupplyContractService {
     @Autowired
     private ArtisteSupplyContractMapper adao;
-    public List<ArtisteSupplyContract> queryAll(){
-        return adao.queryAll();
+    public List<ArtisteSupplyContract> queryVo(){
+        return adao.queryVo();
     }
     //addd
 }

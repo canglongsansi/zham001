@@ -16,6 +16,6 @@ public class AristeSupplyContractController {
     private AristeSupplyContractService aristeSupplyContractService;
     @RequestMapping(value = "/AristeSupplyContract",method = RequestMethod.GET)
     public ResponseEntity getAristeSupplyContract(){
-        return new ResponseEntity(aristeSupplyContractService.queryAll(), HttpStatus.OK);
+        return new ResponseEntity(aristeSupplyContractService.queryVo(), HttpStatus.OK);
     }
 }

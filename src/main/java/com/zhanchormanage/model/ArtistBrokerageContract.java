@@ -1,5 +1,7 @@
 package com.zhanchormanage.model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import java.io.Serializable;
 import java.util.Date;
 
@@ -7,9 +9,9 @@ public class ArtistBrokerageContract implements Serializable{
     private Integer id;
 
     private String bName;
-
+    @JsonFormat(pattern="yyyy-MM-dd")
     private Date fromtime;
-
+    @JsonFormat(pattern="yyyy-MM-dd")
     private Date totime;
 
     private String blance;

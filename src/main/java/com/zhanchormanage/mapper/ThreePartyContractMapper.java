@@ -54,6 +54,26 @@ public interface ThreePartyContractMapper {
     })
     List<ThreePartyContract> queryAll();
 
+    @Select({
+            "select",
+            "id,fromtime, totime, a_name,address, tel, ",
+            "stage_name,",
+            "tofile,created_time, updated_time",
+            "from three_party_contract"
+    })
+    @Results({
+            @Result(column="id", property="id", jdbcType=JdbcType.INTEGER, id=true),
+            @Result(column="fromtime", property="fromtime", jdbcType=JdbcType.TIMESTAMP),
+            @Result(column="totime", property="totime", jdbcType=JdbcType.TIMESTAMP),
+            @Result(column="a_name", property="aName", jdbcType=JdbcType.VARCHAR),
+            @Result(column="address", property="address", jdbcType=JdbcType.VARCHAR),
+            @Result(column="tel", property="tel", jdbcType=JdbcType.VARCHAR),
+            @Result(column="stage_name", property="stageName", jdbcType=JdbcType.VARCHAR),
+            @Result(column="tofile", property="tofile", jdbcType=JdbcType.INTEGER),
+            @Result(column="created_time", property="createdTime", jdbcType=JdbcType.TIMESTAMP),
+            @Result(column="updated_time", property="updatedTime", jdbcType=JdbcType.TIMESTAMP)
+    })
+    List<ThreePartyContract> queryVo();
     @Delete({
         "delete from three_party_contract",
         "where id = #{id,jdbcType=INTEGER}"

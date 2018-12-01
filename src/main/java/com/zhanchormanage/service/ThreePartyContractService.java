@@ -11,7 +11,7 @@ import java.util.List;
 public class ThreePartyContractService {
     @Autowired
     private ThreePartyContractMapper tdao;
-    public List<ThreePartyContract> queryAll(){
-        return tdao.queryAll();
+    public List<ThreePartyContract> queryVo(){
+        return tdao.queryVo();
     }
 }

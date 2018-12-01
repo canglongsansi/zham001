@@ -11,7 +11,7 @@ import java.util.List;
 public class CommentatorContractService {
     @Autowired
     private CommentatorContractMapper cdao;
-    public List<CommentatorContract> queryAll(){
-        return cdao.queryAll();
+    public List<CommentatorContract> queryVo(){
+        return cdao.queryVo();
     }
 }

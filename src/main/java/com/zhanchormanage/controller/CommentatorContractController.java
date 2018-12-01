@@ -16,6 +16,6 @@ public class CommentatorContractController {
     private CommentatorContractService commentatorContractService;
     @RequestMapping(value = "/CommentatorContract",method = RequestMethod.POST)
     public ResponseEntity getCommentatorContract(){
-        return new ResponseEntity(commentatorContractService.queryAll(), HttpStatus.OK);
+        return new ResponseEntity(commentatorContractService.queryVo(), HttpStatus.OK);
     }
 }
