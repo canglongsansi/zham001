@@ -14,4 +14,7 @@ public class CommentatorContractService {
     public List<CommentatorContract> queryVo(){
         return cdao.queryVo();
     }
+    public List<CommentatorContract> queryVoSearch(){
+        return cdao.queryVoSearch();
+    }
 }

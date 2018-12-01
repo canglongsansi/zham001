@@ -133,7 +133,7 @@
 												<th>
 													姓名
 												</th>
-												<th class="table-title">
+												<th>
 													艺名
 												</th>
 												<th>
@@ -196,23 +196,30 @@
 		<script>
 			$(function() {
                 $.ajax({
-                    type: "GET",
-                    url: "/AristeSupplyContract",
+                    type: "POST",
+                    url: "/yirenjingji",
                     dataType: "json",
                     success: function (data) {
 
                         var dataObj = data;
                         con = "";
+
                         $.each(dataObj, function(index, item){
+                            var toFile = '否';
+                            if(item.tofile == 1){
+                               toFile = '是';
+                            }else{
+                                toFile;
+                            }
                             con += "<tr>" +
                                 "<td><input name=\"ids\" value=\"1\" type=\"checkbox\"></td>" +
                                 "<td>"+item.id+"</td>" +
                                 "<td>"+item.aName+"</td><td>" +
-                                "<a href=\"#\">"+item.stageName+"</a></td>" +
-                                "<td><span class=\"am-badge am-badge-secondary\">"+item.fromtime+"</span></td>" +
+                                ""+item.stageName+"</td>" +
+                                "<td>"+item.fromtime+"</td>" +
                                 "<td>"+item.totime+"</td>" +
                                 "<td>"+item.tel+"</td>" +
-                                "<td>"+item.tofile+"</td>" +
+                                "<td>"+toFile+"</td>" +
                                 "<td><div class=\"am-btn-toolbar\"><div class=\"am-btn-group am-btn-group-xs\"><button type=\"button\" class=\"am-btn am-btn-default am-btn-xs am-text-secondary btnEdit\"><span class=\"am-icon-pencil-square-o\"></span> 编辑</button><button type=\"button\" class=\"am-btn am-btn-default am-btn-xs am-text-danger am-hide-sm-only\" onclick=\"delUser(1,1)\"><span class=\"am-icon-trash-o\"></span> 删除</button></div></div></td></tr>"
                         });
 						$("#tUser").html(con);
@@ -221,8 +228,33 @@
 				$(".search").click(function() {
 					$.ajax({
                         type: "POST",
-                        url: "/AristeSupplyContract_search",
+                        url: "/yirenjingji_search",
                         dataType: "json",
+                        success: function (data) {
+                            console.log(data);
+                            var dataObj = data;
+                            con = "";
+
+                            $.each(dataObj, function(index, item){
+                                var toFile = '否';
+                                if(item.tofile == 1){
+                                    toFile = '是';
+                                }else{
+                                    toFile;
+                                }
+                                con += "<tr>" +
+                                    "<td><input name=\"ids\" value=\"1\" type=\"checkbox\"></td>" +
+                                    "<td>"+item.id+"</td>" +
+                                    "<td>"+item.aName+"</td><td>" +
+                                    ""+item.stageName+"</td>" +
+                                    "<td>"+item.fromtime+"</td>" +
+                                    "<td>"+item.totime+"</td>" +
+                                    "<td>"+item.tel+"</td>" +
+                                    "<td>"+toFile+"</td>" +
+                                    "<td><div class=\"am-btn-toolbar\"><div class=\"am-btn-group am-btn-group-xs\"><button type=\"button\" class=\"am-btn am-btn-default am-btn-xs am-text-secondary btnEdit\"><span class=\"am-icon-pencil-square-o\"></span> 编辑</button><button type=\"button\" class=\"am-btn am-btn-default am-btn-xs am-text-danger am-hide-sm-only\" onclick=\"delUser(1,1)\"><span class=\"am-icon-trash-o\"></span> 删除</button></div></div></td></tr>"
+                            });
+                            $("#tUser").html(con);
+                        }
 					});
 				});
 

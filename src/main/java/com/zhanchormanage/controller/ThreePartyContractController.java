@@ -18,4 +18,8 @@ public class ThreePartyContractController {
     public ResponseEntity getThreePartyContract(){
         return new ResponseEntity(threePartyContractService.queryVo(), HttpStatus.OK);
     }
+    @RequestMapping(value = "/ThreePartyContract_search",method = RequestMethod.POST)
+    public ResponseEntity getAristeSupplyContractSearch(){
+        return new ResponseEntity(threePartyContractService.queryVoSearch(), HttpStatus.OK);
+    }
 }

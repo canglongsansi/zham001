@@ -14,8 +14,13 @@ import org.springframework.web.bind.annotation.RestController;
 public class AristeSupplyContractController {
     @Autowired
     private AristeSupplyContractService aristeSupplyContractService;
-    @RequestMapping(value = "/AristeSupplyContract",method = RequestMethod.GET)
+    @RequestMapping(value = "/yirengongji",method = RequestMethod.POST)
     public ResponseEntity getAristeSupplyContract(){
         return new ResponseEntity(aristeSupplyContractService.queryVo(), HttpStatus.OK);
+    }
+
+    @RequestMapping(value = "/yirengongji_search",method = RequestMethod.POST)
+    public ResponseEntity getAristeSupplyContractSearch(){
+        return new ResponseEntity(aristeSupplyContractService.queryVoSearch(), HttpStatus.OK);
     }
 }

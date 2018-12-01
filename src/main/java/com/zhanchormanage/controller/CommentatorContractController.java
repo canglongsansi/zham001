@@ -18,4 +18,8 @@ public class CommentatorContractController {
     public ResponseEntity getCommentatorContract(){
         return new ResponseEntity(commentatorContractService.queryVo(), HttpStatus.OK);
     }
+    @RequestMapping(value = "/CommentatorContract_search",method = RequestMethod.POST)
+    public ResponseEntity getAristeSupplyContractSearch(){
+        return new ResponseEntity(commentatorContractService.queryVoSearch(), HttpStatus.OK);
+    }
 }

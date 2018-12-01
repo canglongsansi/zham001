@@ -14,4 +14,7 @@ public class ThreePartyContractService {
     public List<ThreePartyContract> queryVo(){
         return tdao.queryVo();
     }
+    public List<ThreePartyContract> queryVoSearch(){
+        return tdao.queryVoSearch();
+    }
 }
