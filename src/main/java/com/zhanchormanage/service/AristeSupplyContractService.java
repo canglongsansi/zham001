@@ -14,4 +14,5 @@ public class AristeSupplyContractService {
     public List<ArtisteSupplyContract> queryAll(){
         return adao.queryAll();
     }
+    //addd
 }
