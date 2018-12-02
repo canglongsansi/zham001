@@ -220,11 +220,12 @@
                         "<td>"+item.totime+"</td>" +
                         "<td>"+item.tel+"</td>" +
                         "<td>"+toFile+"</td>" +
-                        "<td><div class=\"am-btn-toolbar\"><div class=\"am-btn-group am-btn-group-xs\"><form method=\"POST\" enctype=\"multipart/form-data\" action=\"AristeSupplyContract_upload\"><input type=\"file\" name=\"file\" style=\"width: 230px;height: 25px;\"/><input type=\"submit\" value=\"上传\" style=\"background:#df3834;\"></form><button type=\"button\" class=\"am-btn am-btn-default am-btn-xs am-text-secondary btnEdit\"><span class=\"am-icon-pencil-square-o\"></span> 编辑</button><button type=\"button\" class=\"am-btn am-btn-default am-btn-xs am-text-danger am-hide-sm-only down\"><span class=\"am-icon-trash-o\"></span> 下载</button></div></div></td></tr>"
+                        "<td><div class=\"am-btn-toolbar\"><div class=\"am-btn-group am-btn-group-xs\"><form method=\"POST\" enctype=\"multipart/form-data\" action=\"AristeSupplyContract_upload\"><input type=\"file\" name=\"file\" style=\"width: 230px;height: 25px;\"/><input type=\"submit\" value=\"上传\" style=\"background:#df3834;\"></form><button type=\"button\" class=\"am-btn am-btn-default am-btn-xs am-text-secondary btnEdit\"><span class=\"am-icon-pencil-square-o\"></span> 编辑</button><button type=\"button\" data-name="+item.filehost+" class=\"am-btn am-btn-default am-btn-xs am-text-danger am-hide-sm-only down\"><span class=\"am-icon-trash-o\"></span> 下载</button></div></div></td></tr>"
                 });
                 $("#tUser").html(con);
                 $(".down").click(function() {
-                    alert(1)
+                    var a=($(this).attr("data-name"));
+                    console.log(a);
                     $.ajax({
                         type: "GET",
                         url: "/fileDownLoad_artiste_supply.action",
@@ -262,15 +263,16 @@
                             "<td>"+item.totime+"</td>" +
                             "<td>"+item.tel+"</td>" +
                             "<td>"+toFile+"</td>" +
-                            "<td><div class=\"am-btn-toolbar\"><div class=\"am-btn-group am-btn-group-xs\"><form method=\"POST\" enctype=\"multipart/form-data\" action=\"CommentatorContract_upload\"><input type=\"file\" name=\"file\" style=\"width: 230px;height: 25px;\"/><input type=\"submit\" value=\"上传\" style=\"background:#df3834;\"></form><button type=\"button\" class=\"am-btn am-btn-default am-btn-xs am-text-secondary btnEdit\"><span class=\"am-icon-pencil-square-o\"></span> 编辑</button><button type=\"button\" class=\"am-btn am-btn-default am-btn-xs am-text-danger am-hide-sm-only down\"><span class=\"am-icon-trash-o\"></span> 下载</button></div></div></td></tr>"
+                            "<td><div class=\"am-btn-toolbar\"><div class=\"am-btn-group am-btn-group-xs\"><form method=\"POST\" enctype=\"multipart/form-data\" action=\"CommentatorContract_upload\"><input type=\"file\" name=\"file\" style=\"width: 230px;height: 25px;\"/><input type=\"submit\" value=\"上传\" style=\"background:#df3834;\"></form><button type=\"button\" class=\"am-btn am-btn-default am-btn-xs am-text-secondary btnEdit\"><span class=\"am-icon-pencil-square-o\"></span> 编辑</button><button type=\"button\" id="+item.filehost+" class=\"am-btn am-btn-default am-btn-xs am-text-danger am-hide-sm-only down\"><span class=\"am-icon-trash-o\"></span> 下载</button></div></div></td></tr>"
                     });
                     $("#tUser").html(con);
                     $(".down").click(function() {
-                        alert(1)
+                        var a=$(this).attr("id");
+                        console.log(a);
                         $.ajax({
                             type: "GET",
                             url: "/fileDownLoad_artiste_supply.action",
-                            data:'',
+                            data:'a',
                             dataType: "json",
                             success:function () {
                             }
