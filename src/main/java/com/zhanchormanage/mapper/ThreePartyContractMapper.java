@@ -52,7 +52,7 @@ public interface ThreePartyContractMapper {
             @Result(column="created_time", property="createdTime", jdbcType=JdbcType.TIMESTAMP),
             @Result(column="updated_time", property="updatedTime", jdbcType=JdbcType.TIMESTAMP)
     })
-    List<ThreePartyContract> queryAll();
+    List<ThreePartyContract> queryVo();
 
 
     @Select({
@@ -96,7 +96,7 @@ public interface ThreePartyContractMapper {
             @Result(column="created_time", property="createdTime", jdbcType=JdbcType.TIMESTAMP),
             @Result(column="updated_time", property="updatedTime", jdbcType=JdbcType.TIMESTAMP)
     })
-    List<ThreePartyContract> queryVo();
+    List<ThreePartyContract> queryVo1();
     @Delete({
         "delete from three_party_contract",
         "where id = #{id,jdbcType=INTEGER}"

@@ -52,7 +52,7 @@ public interface ArtistBrokerageContractMapper {
             @Result(column="created_time", property="createdTime", jdbcType=JdbcType.TIMESTAMP),
             @Result(column="updated_time", property="updatedTime", jdbcType=JdbcType.TIMESTAMP)
     })
-    List<ArtistBrokerageContract> queryAll();
+    List<ArtistBrokerageContract> queryVo();
 
 
     @Select({
@@ -73,7 +73,7 @@ public interface ArtistBrokerageContractMapper {
             @Result(column="created_time", property="createdTime", jdbcType=JdbcType.TIMESTAMP),
             @Result(column="updated_time", property="updatedTime", jdbcType=JdbcType.TIMESTAMP)
     })
-    List<ArtistBrokerageContract> queryVo();
+    List<ArtistBrokerageContract> queryVo1();
 
 
 

@@ -52,7 +52,7 @@ public interface CommentatorContractMapper {
             @Result(column="created_time", property="createdTime", jdbcType=JdbcType.TIMESTAMP),
             @Result(column="updated_time", property="updatedTime", jdbcType=JdbcType.TIMESTAMP)
     })
-    List<CommentatorContract> queryAll();
+    List<CommentatorContract> queryVo();
 
 
     @Select({
@@ -97,7 +97,7 @@ public interface CommentatorContractMapper {
             @Result(column="created_time", property="createdTime", jdbcType=JdbcType.TIMESTAMP),
             @Result(column="updated_time", property="updatedTime", jdbcType=JdbcType.TIMESTAMP)
     })
-    List<CommentatorContract> queryVo();
+    List<CommentatorContract> queryVo1();
     @Delete({
         "delete from commentator_contract",
         "where id = #{id,jdbcType=INTEGER}"

@@ -17,8 +17,6 @@ public class AristeSupplyContractService {
         return adao.queryVo();
     }
     public List<ArtisteSupplyContract> queryVoSearch(){
-
-
         return adao.queryVoSearch();
     }
     //addd

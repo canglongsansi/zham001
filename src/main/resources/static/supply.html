@@ -148,6 +148,9 @@
 									<th>
 										纸质是否归档
 									</th>
+									<th>
+										附件管理
+									</th>
 									<th class="table-set">
 										操作
 									</th>
@@ -200,6 +203,7 @@
             url: "/yirengongji",
             dataType: "json",
             success: function (data) {
+                console.log(data);
 
                 var dataObj = data;
                 con = "";
@@ -225,11 +229,10 @@
                 $("#tUser").html(con);
                 $(".down").click(function() {
                     var a=($(this).attr("data-name"));
-                    console.log(a);
                     $.ajax({
                         type: "GET",
                         url: "/fileDownLoad_artiste_supply.action",
-                        data:'',
+                        data:a,
                         dataType: "json",
                         success:function () {
                         }
