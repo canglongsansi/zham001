@@ -271,11 +271,10 @@
                     $("#tUser").html(con);
                     $(".down").click(function() {
                         var a=$(this).attr("id");
-                        console.log(a);
                         $.ajax({
                             type: "GET",
                             url: "/fileDownLoad_artiste_supply.action",
-                            data:'a',
+                            data:a,
                             dataType: "json",
                             success:function () {
                             }
