@@ -2,7 +2,6 @@ package com.zhanchormanage.service;
 
 import com.zhanchormanage.mapper.ArtistBrokerageContractMapper;
 import com.zhanchormanage.model.ArtistBrokerageContract;
-import com.zhanchormanage.model.ArtistBrokerageContractExample;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -17,5 +16,8 @@ public class ArtistBrokerageContractService {
     }
     public List<ArtistBrokerageContract> queryVoSearch(){
         return adao.queryVoSearch();
+    }
+    public void updateFilehost(ArtistBrokerageContract artistBrokerageContract){
+        adao.updateByPrimaryKeySelective(artistBrokerageContract);
     }
 }

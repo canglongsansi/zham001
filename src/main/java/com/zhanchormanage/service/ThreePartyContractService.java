@@ -17,4 +17,7 @@ public class ThreePartyContractService {
     public List<ThreePartyContract> queryVoSearch(){
         return tdao.queryVoSearch();
     }
+    public void updateFilehost(ThreePartyContract threePartyContract){
+        tdao.updateByPrimaryKeySelective(threePartyContract);
+    }
 }

@@ -19,4 +19,7 @@ public class CommentatorContractService {
     public List<CommentatorContract> queryVoSearch(){
         return cdao.queryVoSearch();
     }
+    public void updateFilehost(CommentatorContract commentatorContract){
+        cdao.updateByPrimaryKeySelective(commentatorContract);
+    }
 }
