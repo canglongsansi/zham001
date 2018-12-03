@@ -6,6 +6,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.View;
 
 import java.io.BufferedOutputStream;
 import java.io.File;
@@ -52,7 +54,7 @@ public class UploadController {
     }
     @RequestMapping("/CommentatorContract_upload")
     @ResponseBody
-    public ResponseEntity CommentatorContractUpLoadFile(MultipartFile file) throws IllegalStateException, IOException {
+    public ModelAndView CommentatorContractUpLoadFile(MultipartFile file) throws IllegalStateException, IOException {
         BufferedOutputStream stream = null;
         if (!file.isEmpty()) {
             String path = "C://CommentatorContract";
@@ -64,13 +66,13 @@ public class UploadController {
             out.write(file.getBytes());
             out.flush();
             out.close();
-            return new ResponseEntity(HttpStatus.OK);
-        }
+            ModelAndView mv=new ModelAndView("index.html");
+            return mv;        }
         return null;
     }
     @RequestMapping("/ThreePartyContract_upload")
     @ResponseBody
-    public ResponseEntity ThreePartyContractUpLoadFile(MultipartFile file) throws IllegalStateException, IOException {
+    public ModelAndView ThreePartyContractUpLoadFile(MultipartFile file) throws IllegalStateException, IOException {
         BufferedOutputStream stream = null;
         if (!file.isEmpty()) {
             String path = "C://ThreePartyContract";
@@ -82,7 +84,8 @@ public class UploadController {
             out.write(file.getBytes());
             out.flush();
             out.close();
-            return new ResponseEntity(HttpStatus.OK);
+            ModelAndView mv=new ModelAndView("index.html");
+            return mv;
         }
         return null;
     }

@@ -223,20 +223,41 @@
                         "<td>"+item.totime+"</td>" +
                         "<td>"+item.tel+"</td>" +
                         "<td>"+toFile+"</td>" +
-                        "<td><div class=\"am-btn-toolbar\"><div class=\"am-btn-group am-btn-group-xs\"><form method=\"POST\" enctype=\"multipart/form-data\" action=\"CommentatorContract_upload\"><input type=\"file\" name=\"file\" style=\"width: 230px;height: 25px;\"/><input type=\"submit\" value=\"上传\" style=\"background:#df3834;\"></form><button type=\"button\" class=\"am-btn am-btn-default am-btn-xs am-text-secondary btnEdit\"><span class=\"am-icon-pencil-square-o\"></span> 编辑</button><button type=\"button\" data-name="+item.filehost+" class=\"am-btn am-btn-default am-btn-xs am-text-danger am-hide-sm-only down\"><span class=\"am-icon-trash-o\"></span> 下载</button></div></div></td></tr>"
+                        "<td><div class=\"am-btn-toolbar\"><div class=\"am-btn-group am-btn-group-xs\"><form method=\"POST\" enctype=\"multipart/form-data\" action=\"ArtistBrokerageContract_upload\"><input type=\"file\" name=\"file\" style=\"width: 230px;height: 25px;\"/><input type=\"submit\" value=\"上传\" style=\"background:#df3834;\"></form><button type=\"button\" data-name="+item.filehost+" class=\"am-btn am-btn-default am-btn-xs am-text-danger am-hide-sm-only down\"><span class=\"am-icon-trash-o\"></span> 下载</button></div></div></td>" +
+                        "<td><div class=\"am-btn-toolbar\"><div class=\"am-btn-group am-btn-group-xs\"><button type=\"button\" class=\"am-btn am-btn-default am-btn-xs am-text-secondary btnEdit\"><span class=\"am-icon-pencil-square-o\"></span> 编辑</button></div></div></td></tr>"
                 });
                 $("#tUser").html(con);
-                $(".down").click(function() {
+                $(".down").click(function () {
+                    var fileName=($(this).attr("data-name"));
+					window.location.href="/fileDownLoad_commentator.action?fileName="+fileName;
+                });
+               /* $(".down").click(function() {
                     var a=($(this).attr("data-name"));
+                    console.log(a);
                     $.ajax({
                         type: "GET",
                         url: "/fileDownLoad_commentator.action",
-                        data:a,
+                        data: {
+                            "fileName" : a
+						},
+                        contentType:"application/json",
                         dataType: "json",
-                        success:function () {
+                        success: function(response, status, request) {
+                            var disp = request.getResponseHeader('Content-Disposition');
+                            if (disp && disp.search('attachment') != -1) {  //判断是否为文件
+                                var form = $('<form method="POST" action="' + "/fileDownLoad_commentator.action?"+a+ + '">');
+                                $.each(params, function(k, v) {
+                                    form.append($('<input type="hidden" name="' + k +
+                                        '" value="' + v + '">'));
+                                });
+                                $('body').append(form);
+                                form.submit(); //自动提交
+                            }
                         }
+
+
                     });
-                });
+                });*/
             }
 
         });
@@ -267,10 +288,15 @@
                             "<td>"+item.totime+"</td>" +
                             "<td>"+item.tel+"</td>" +
                             "<td>"+toFile+"</td>" +
-                            "<td><div class=\"am-btn-toolbar\"><div class=\"am-btn-group am-btn-group-xs\"><form enctype=\"multipart/form-data\" action=\"CommentatorContract_upload\"><input type=\"file\" name=\"file\" style=\"width: 230px;height: 25px;\"/><input type=\"submit\" value=\"上传\" style=\"background:#df3834;\"></form><button type=\"button\" class=\"am-btn am-btn-default am-btn-xs am-text-secondary btnEdit\"><span class=\"am-icon-pencil-square-o\"></span> 编辑</button><button type=\"button\" data-name="+item.filehost+" class=\"am-btn am-btn-default am-btn-xs am-text-danger am-hide-sm-only down\"><span class=\"am-icon-trash-o\"></span> 下载</button></div></div></td></tr>"
+                            "<td><div class=\"am-btn-toolbar\"><div class=\"am-btn-group am-btn-group-xs\"><form method=\"POST\" enctype=\"multipart/form-data\" action=\"ArtistBrokerageContract_upload\"><input type=\"file\" name=\"file\" style=\"width: 230px;height: 25px;\"/><input type=\"submit\" value=\"上传\" style=\"background:#df3834;\"></form><button type=\"button\" data-name="+item.filehost+" class=\"am-btn am-btn-default am-btn-xs am-text-danger am-hide-sm-only down\"><span class=\"am-icon-trash-o\"></span> 下载</button></div></div></td>" +
+                            "<td><div class=\"am-btn-toolbar\"><div class=\"am-btn-group am-btn-group-xs\"><button type=\"button\" class=\"am-btn am-btn-default am-btn-xs am-text-secondary btnEdit\"><span class=\"am-icon-pencil-square-o\"></span> 编辑</button></div></div></td></tr>"
                     });
                     $("#tUser").html(con);
-                    $(".down").click(function() {
+                    $(".down").click(function () {
+                        var fileName=($(this).attr("data-name"));
+                        window.location.href="/fileDownLoad_commentator.action?fileName="+fileName;
+                    });
+                   /* $(".down").click(function() {
                         var a=($(this).attr("data-name"));
                         $.ajax({
                             type: "GET",
@@ -280,7 +306,7 @@
                             success:function () {
                             }
                         });
-                    });
+                    });*/
                 }
             });
         });

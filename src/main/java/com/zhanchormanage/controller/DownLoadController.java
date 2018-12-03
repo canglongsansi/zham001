@@ -1,16 +1,16 @@
 package com.zhanchormanage.controller;
 
 import org.apache.commons.io.FileUtils;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import java.io.File;
+import java.io.IOException;
 
 @Controller
 public class DownLoadController {
@@ -43,7 +43,7 @@ public class DownLoadController {
     }
     @RequestMapping(value = "/fileDownLoad_commentator.action",method = RequestMethod.GET)
     @ResponseBody
-    public ResponseEntity<byte[]> fileDownLoadCommentator(String fileName) throws Exception {
+    public ResponseEntity<byte[]> fileDownLoadCommentator(@RequestParam("fileName") String fileName) throws Exception {
         String path = "C://CommentatorContract/"+fileName;
         File file = new File(path);
         HttpHeaders headers = new HttpHeaders();
