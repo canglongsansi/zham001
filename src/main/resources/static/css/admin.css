@@ -360,6 +360,10 @@ gallery.html css
   margin-top: 4px;
 }
 
+.yema{ text-align: center;  margin: 40px 0 20px 0;}
+.yema a{padding: 6px 12px; border:solid 1px #c5c5c5; font-size: 14px;margin: 4px; }
+
+
 /*
  404.html css
 */
@@ -370,3 +374,4 @@ gallery.html css
   width: 200px;
   margin: 0 auto;
 }
+

@@ -269,6 +269,7 @@ $
 						cn : "panel"
 					});
 				}
+				console.log(str);
 				var str = "<div class='jq_dvpanel'  style='z-index:2;box-shadow: 0px 0px 5px #BCD4E5;border: 1px solid #BCD4E5 !important;position:absolute;background-Color:#fff;width:"
 						+ (parseInt(e.iframeWidth) + 30)
 						+ "px;border: 1px solid rgba(0, 0, 0, 0.2);font-size: 13px;opacity:1;filter:alpha(opacity=100);-moz-opacity:1;'>"

@@ -1,5 +1,6 @@
 package com.zhanchormanage.controller;
 
+import com.github.pagehelper.PageHelper;
 import com.zhanchormanage.service.CommentatorContractService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -14,9 +15,9 @@ import org.springframework.web.bind.annotation.RestController;
 public class CommentatorContractController {
     @Autowired
     private CommentatorContractService commentatorContractService;
-    @RequestMapping(value = "/CommentatorContract",method = RequestMethod.POST)
-    public ResponseEntity getCommentatorContract(){
-        return new ResponseEntity(commentatorContractService.queryVo(), HttpStatus.OK);
+    @RequestMapping(value = "/CommentatorContract",method = RequestMethod.GET)
+    public ResponseEntity getCommentatorContract(int pageNum){
+        return new ResponseEntity(commentatorContractService.queryVo(pageNum,13), HttpStatus.OK);
     }
     @RequestMapping(value = "/CommentatorContract_search",method = RequestMethod.POST)
     public ResponseEntity getAristeSupplyContractSearch(){

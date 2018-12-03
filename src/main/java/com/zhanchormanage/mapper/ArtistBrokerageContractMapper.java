@@ -79,7 +79,7 @@ public interface ArtistBrokerageContractMapper {
 
     @Select({
             "select",
-            "id,fromtime, totime, a_name,address, tel, stage_name,",
+            "id,fromtime, totime, a_name,address, tel, stage_name, filehost",
             "tofile,created_time, updated_time",
             "from artiste_supply_contract",
             "where (to_days(totime) - to_days(now())) < 30"

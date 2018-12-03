@@ -16,7 +16,7 @@ import java.io.IOException;
 public class DownLoadController {
     @RequestMapping(value = "/fileDownLoad_artiste_supply.action", method = RequestMethod.GET)
     @ResponseBody
-    public ResponseEntity<byte[]> fileDownLoadArtisteSupply(String fileName) throws Exception {
+    public ResponseEntity<byte[]> fileDownLoadArtisteSupply(@RequestParam("fileName") String fileName) throws Exception {
         String path = "C://AristeSupplyContract/" + fileName;
         File file = new File(path);
         HttpHeaders headers = new HttpHeaders();
@@ -30,7 +30,7 @@ public class DownLoadController {
 
     @RequestMapping(value = "/fileDownLoad_artist_brokerage.action",method = RequestMethod.GET)
     @ResponseBody
-    public ResponseEntity<byte[]> fileDownLoadArtistBrokerage(String fileName) throws Exception {
+    public ResponseEntity<byte[]> fileDownLoadArtistBrokerage(@RequestParam("fileName") String fileName) throws Exception {
         String path = "C://ArtistBrokerageContract/"+fileName;
         File file = new File(path);
         HttpHeaders headers = new HttpHeaders();
@@ -56,7 +56,7 @@ public class DownLoadController {
     }
     @RequestMapping(value = "/fileDownLoad_three_party_contract.action",method = RequestMethod.GET)
     @ResponseBody
-    public ResponseEntity<byte[]> fileDownLoadThreePartyContract(String fileName) throws Exception {
+    public ResponseEntity<byte[]> fileDownLoadThreePartyContract(@RequestParam("fileName") String fileName) throws Exception {
         String path = "C://ThreePartyContract/"+fileName;
         File file = new File(path);
         HttpHeaders headers = new HttpHeaders();

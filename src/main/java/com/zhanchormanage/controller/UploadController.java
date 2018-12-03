@@ -1,5 +1,6 @@
 package com.zhanchormanage.controller;
 
+import com.sun.deploy.net.HttpResponse;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -9,16 +10,14 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.View;
 
-import java.io.BufferedOutputStream;
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
+import javax.servlet.http.HttpServletResponse;
+import java.io.*;
 
 @Controller
 public class UploadController {
     @RequestMapping("/AristeSupplyContract_upload")
     @ResponseBody
-    public ResponseEntity AristeSupplyContractUpLoadFile(MultipartFile file) throws IllegalStateException, IOException {
+    public void AristeSupplyContractUpLoadFile(MultipartFile file,HttpServletResponse httpServletResponse) throws IllegalStateException, IOException {
         BufferedOutputStream stream = null;
         if (!file.isEmpty()) {
             String path = "C://AristeSupplyContract";
@@ -30,13 +29,18 @@ public class UploadController {
             out.write(file.getBytes());
             out.flush();
             out.close();
-            return new ResponseEntity(HttpStatus.OK);
+            //TODO 重定向不如ajax异步刷新好，因为重定向的话会重新加载布局，如果用户在第n页，重定向会让页面重新进入第1页展示，否则需要记录当前用户的所在的页码数，很麻烦
+            httpServletResponse.setCharacterEncoding("utf-8");
+            PrintWriter pw = httpServletResponse.getWriter();
+            pw.print(
+                    "<script charset='UTF-8' language='javascript'>alert('上传成功！');" +
+                            "window.location.href='supply.html';" +
+                    "</script>");
         }
-        return null;
     }
     @RequestMapping("/ArtistBrokerageContract_upload")
     @ResponseBody
-    public ResponseEntity ArtistBrokerageContractUpLoadFile(MultipartFile file) throws IllegalStateException, IOException {
+    public void ArtistBrokerageContractUpLoadFile(MultipartFile file,HttpServletResponse httpServletResponse) throws IllegalStateException, IOException {
         BufferedOutputStream stream = null;
         if (!file.isEmpty()) {
             String path = "C://ArtistBrokerageContract";
@@ -48,13 +52,17 @@ public class UploadController {
             out.write(file.getBytes());
             out.flush();
             out.close();
-            return new ResponseEntity(HttpStatus.OK);
+            httpServletResponse.setCharacterEncoding("utf-8");
+            PrintWriter pw = httpServletResponse.getWriter();
+            pw.print(
+                    "<script charset='UTF-8' language='javascript'>alert('上传成功！');" +
+                            "window.location.href='artist.html';" +
+                    "</script>");
         }
-        return null;
     }
     @RequestMapping("/CommentatorContract_upload")
     @ResponseBody
-    public ModelAndView CommentatorContractUpLoadFile(MultipartFile file) throws IllegalStateException, IOException {
+    public void CommentatorContractUpLoadFile(MultipartFile file, HttpServletResponse httpResponse) throws IllegalStateException, IOException {
         BufferedOutputStream stream = null;
         if (!file.isEmpty()) {
             String path = "C://CommentatorContract";
@@ -66,13 +74,17 @@ public class UploadController {
             out.write(file.getBytes());
             out.flush();
             out.close();
-            ModelAndView mv=new ModelAndView("index.html");
-            return mv;        }
-        return null;
+            httpResponse.setCharacterEncoding("utf-8");
+            PrintWriter pw = httpResponse.getWriter();
+            pw.print(
+                    "<script charset='UTF-8' language='javascript'>alert('上传成功！');" +
+                            "window.location.href='commentator.html';" +
+                    "</script>");
+        }
     }
     @RequestMapping("/ThreePartyContract_upload")
     @ResponseBody
-    public ModelAndView ThreePartyContractUpLoadFile(MultipartFile file) throws IllegalStateException, IOException {
+    public void ThreePartyContractUpLoadFile(MultipartFile file,HttpServletResponse httpServletResponse) throws IllegalStateException, IOException {
         BufferedOutputStream stream = null;
         if (!file.isEmpty()) {
             String path = "C://ThreePartyContract";
@@ -84,9 +96,12 @@ public class UploadController {
             out.write(file.getBytes());
             out.flush();
             out.close();
-            ModelAndView mv=new ModelAndView("index.html");
-            return mv;
+            httpServletResponse.setCharacterEncoding("utf-8");
+            PrintWriter pw = httpServletResponse.getWriter();
+            pw.print(
+                    "<script charset='UTF-8' language='javascript'>alert('上传成功！');" +
+                            "window.location.href='threePart.html';" +
+                    "</script>");
         }
-        return null;
     }
 }
