@@ -4,7 +4,7 @@ function myajax_c(url,type){
         url: url,
         dataType: "json",
         success: function (data) {
-            var dataObj = data;
+            var dataObj = data.list;
             con = "";
             $.each(dataObj, function (index, item) {
                 var toFile = '否';
@@ -26,6 +26,7 @@ function myajax_c(url,type){
                 //"<td><div class=\"am-btn-toolbar\"><div class=\"am-btn-group am-btn-group-xs\"><button type=\"button\" class=\"am-btn am-btn-default am-btn-xs am-text-secondary btnEdit\"><span class=\"am-icon-pencil-square-o\"></span> 编辑</button></div></div></td></tr>"
             });
             $("#tUser").html(con);
+            $("#pageNums").val(data.pageNum)
             $(".file").click(function () {
                 var fileHost = $("#file").attr("data-name");
                 var id = $("#file").attr("data-id");
