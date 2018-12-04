@@ -7,10 +7,7 @@ import com.zhanchormanage.service.CommentatorContractService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -20,8 +17,9 @@ public class CommentatorContractController {
     @Autowired
     private CommentatorContractService commentatorContractService;
     @RequestMapping(value = "/CommentatorContract",method = RequestMethod.GET)
-    public ResponseEntity getCommentatorContract(int pageNum){
-        List<CommentatorContract> list = commentatorContractService.queryVo(pageNum,13);
+    public ResponseEntity getCommentatorContract(@RequestParam(value = "pageNum",defaultValue = "1") int pageNum,
+                                                 @RequestParam(value = "pageSize",defaultValue = "20") int pageSize){
+        List<CommentatorContract> list = commentatorContractService.queryVo(pageNum,pageSize);
         PageInfo<CommentatorContract> personPageInfo = new PageInfo<>(list);
         return new ResponseEntity(personPageInfo, HttpStatus.OK);
     }

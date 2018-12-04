@@ -59,7 +59,7 @@ public interface ThreePartyContractMapper {
             "select",
             "id,fromtime, totime, a_name,address, tel, stage_name, filehost",
             "tofile,created_time, updated_time",
-            "from artiste_supply_contract",
+            "from three_party_contract",
             "where (to_days(totime) - to_days(now())) < 30"
     })
     @Results({

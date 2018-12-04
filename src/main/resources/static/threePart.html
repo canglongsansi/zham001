@@ -151,9 +151,7 @@
 									<th>
 										附件管理
 									</th>
-									<th class="table-set">
-										操作
-									</th>
+
 								</tr>
 								</thead>
 								<tbody id="tUser">
@@ -183,6 +181,15 @@
 
 		</div>
 		<!-- content end -->
+		<div class="yema">
+			<a href="/ThreePartyContract?pageNum=1">首页</a>
+			<a id="prePage" href="#">上一页</a>
+			<input type="text" onkeyup="this.value=this.value.replace(/\D/g,'')"
+				   onafterpaste="this.value=this.value.replace(/\D/g,'')" id="pageNums" style="width: 30px;height: 20px">/47</input>
+			<a id="pageJump">跳转</a>
+			<a id="nextPage" href="#">下一页</a>
+			<a href="/showAnchor?pageNum=47">尾页</a>
+		</div>
 	</div>
 </div>
 
@@ -196,50 +203,11 @@
 <script src="js/jquery-1.11.3.min.js"></script>
 <!--<![endif]-->
 <script type="text/javascript" src="myplugs/js/plugs.js"></script>
+<script type="text/javascript" src="js/myajax.js"></script>
+<script type="text/javascript" src="js/pageinfo.js"></script>
 <script>
     $(function() {
-        $.ajax({
-            type: "POST",
-            url: "/ThreePartyContract",
-            dataType: "json",
-            success: function (data) {
-
-                var dataObj = data;
-                con = "";
-
-                $.each(dataObj, function(index, item){
-                    var toFile = '否';
-                    if(item.tofile == 1){
-                        toFile = '是';
-                    }else{
-                        toFile;
-                    }
-                    con += "<tr>" +
-                        "<td><input name=\"ids\" value=\"1\" type=\"checkbox\"></td>" +
-                        "<td>"+item.id+"</td>" +
-                        "<td>"+item.aName+"</td><td>" +
-                        ""+item.stageName+"</td>" +
-                        "<td>"+item.fromtime+"</td>" +
-                        "<td>"+item.totime+"</td>" +
-                        "<td>"+item.tel+"</td>" +
-                        "<td>"+toFile+"</td>" +
-                        "<td><div class=\"am-btn-toolbar\"><div class=\"am-btn-group am-btn-group-xs\"><form method=\"POST\" enctype=\"multipart/form-data\" action=\"ArtistBrokerageContract_upload\"><input type=\"file\" name=\"file\" style=\"width: 230px;height: 25px;\"/><input type=\"submit\" value=\"上传\" style=\"background:#df3834;\"></form><button type=\"button\" data-name="+item.filehost+" class=\"am-btn am-btn-default am-btn-xs am-text-danger am-hide-sm-only down\"><span class=\"am-icon-trash-o\"></span> 下载</button></div></div></td>" +
-                        "<td><div class=\"am-btn-toolbar\"><div class=\"am-btn-group am-btn-group-xs\"><button type=\"button\" class=\"am-btn am-btn-default am-btn-xs am-text-secondary btnEdit\"><span class=\"am-icon-pencil-square-o\"></span> 编辑</button></div></div></td></tr>"
-                });
-                $("#tUser").html(con);
-                $(".down").click(function() {
-                    var a=($(this).attr("data-name"));
-                    $.ajax({
-                        type: "GET",
-                        url: "/fileDownLoad_three_party_contract.action",
-                        data:a,
-                        dataType: "json",
-                        success:function () {
-                        }
-                    });
-                });
-            }
-        });
+        myajax_c("ThreePartyContract?pageNum=1","GET")
         $(".search").click(function() {
             $.ajax({
                 type: "POST",
@@ -266,38 +234,40 @@
                             "<td>"+item.totime+"</td>" +
                             "<td>"+item.tel+"</td>" +
                             "<td>"+toFile+"</td>" +
-                            "<td><div class=\"am-btn-toolbar\"><div class=\"am-btn-group am-btn-group-xs\"><form method=\"POST\" enctype=\"multipart/form-data\" action=\"ArtistBrokerageContract_upload\"><input type=\"file\" name=\"file\" style=\"width: 230px;height: 25px;\"/><input type=\"submit\" value=\"上传\" style=\"background:#df3834;\"></form><button type=\"button\" data-name="+item.filehost+" class=\"am-btn am-btn-default am-btn-xs am-text-danger am-hide-sm-only down\"><span class=\"am-icon-trash-o\"></span> 下载</button></div></div></td>" +
-                            "<td><div class=\"am-btn-toolbar\"><div class=\"am-btn-group am-btn-group-xs\"><button type=\"button\" class=\"am-btn am-btn-default am-btn-xs am-text-secondary btnEdit\"><span class=\"am-icon-pencil-square-o\"></span> 编辑</button></div></div></td></tr>"
+                            "<td><div class=\"am-btn-toolbar\"><div class=\"am-btn-group am-btn-group-xs\"><button id='file' data-id='"+item.id+"  data-name='"+item.filehost+"' type=\"button\" class=\"file am-btn am-btn-default am-btn-xs am-text-secondary btnEdit\"><span class=\"am-icon-pencil-square-o\"></span> 操作</button></div></div></td></tr>"
+                        //"<td><div class=\"am-btn-toolbar\"><div class=\"am-btn-group am-btn-group-xs\"><button type=\"button\" class=\"am-btn am-btn-default am-btn-xs am-text-secondary btnEdit\"><span class=\"am-icon-pencil-square-o\"></span> 编辑</button></div></div></td></tr>"
                     });
                     $("#tUser").html(con);
-                    $(".down").click(function () {
-                        var fileName=($(this).attr("data-name"));
-                        window.location.href="/fileDownLoad_three_party_contract.action?fileName="+fileName;
-                    });
-                    /*$(".down").click(function() {
-                        var a=($(this).attr("data-name"));
-                        $.ajax({
-                            type: "GET",
-                            url: "/fileDownLoad_three_party_contract.action",
-                            data:a,
-                            dataType: "json",
-                            success:function () {
-                            }
+
+                    $(".file").click(function () {
+                        var fileHost = $("#file").attr("data-name");
+                        var id = $("#file").attr("data-id");
+                        console.log(fileHost);
+                        $.jq_Panel({
+                            title: "添加角色",
+                            iframeWidth: 500,
+                            iframeHeight: 300,
+                            content: '<div class="am-btn-toolbar">' +
+                            '<div class="am-btn-group am-btn-group-xs">' +
+                            '<form method="POST" enctype="multipart/form-data" action="/ThreePartyContract_upload">' +
+                            '<input type="file" name="file" style="width: 230px;height: 25px;"/>' +
+                            '<input type="submit" value="上传" style="background:#df3834;">' +
+                            '<input type="hidden" name="id" value="+'+fileHost+'+" >' +
+                            '</form>' +
+                            '<button type="button" data-name="'+fileHost+'" class="am-btn am-btn-default am-btn-xs am-text-danger am-hide-sm-only down">' +
+                            '<span class="am-icon-trash-o">' +
+                            '</span> 下载' + '</button></div></div>\n'
                         });
-                    });*/
+                        $(".down").click(function () {
+                            var fileName=($(this).attr("data-name"));
+                            window.location.href="/fileDownLoad_three_party_contract.action?fileName="+fileName;
+                        });
+                    });
                 }
             });
         });
-
-        $(".btnEdit").click(function() {
-            $.jq_Panel({
-                title: "编辑用户",
-                url: "addUser.html",
-                iframeWidth: 800,
-                iframeHeight: 600,
-            });
-
-        });
+        getpage('ThreePartyContract',47)
+        //TODO 筛选之后的分页处理
 
     });
 </script>

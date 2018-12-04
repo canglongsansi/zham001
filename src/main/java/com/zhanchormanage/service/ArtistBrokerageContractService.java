@@ -1,5 +1,6 @@
 package com.zhanchormanage.service;
 
+import com.github.pagehelper.PageHelper;
 import com.zhanchormanage.mapper.ArtistBrokerageContractMapper;
 import com.zhanchormanage.model.ArtistBrokerageContract;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,7 +12,8 @@ import java.util.List;
 public class ArtistBrokerageContractService {
     @Autowired
     private ArtistBrokerageContractMapper adao;
-    public List<ArtistBrokerageContract> queryVo(){
+    public List<ArtistBrokerageContract> queryVo(int pageNum,int pageSize){
+        PageHelper.startPage(pageNum,pageSize);
         return adao.queryVo();
     }
     public List<ArtistBrokerageContract> queryVoSearch(){

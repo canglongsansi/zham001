@@ -1,5 +1,6 @@
 package com.zhanchormanage.service;
 
+import com.github.pagehelper.PageHelper;
 import com.zhanchormanage.mapper.ThreePartyContractMapper;
 import com.zhanchormanage.model.ThreePartyContract;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,7 +12,8 @@ import java.util.List;
 public class ThreePartyContractService {
     @Autowired
     private ThreePartyContractMapper tdao;
-    public List<ThreePartyContract> queryVo(){
+    public List<ThreePartyContract> queryVo(int pageNum,int pageSize){
+        PageHelper.startPage(pageNum,pageSize);
         return tdao.queryVo();
     }
     public List<ThreePartyContract> queryVoSearch(){

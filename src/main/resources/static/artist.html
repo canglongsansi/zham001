@@ -1,306 +1,276 @@
 <!DOCTYPE html>
 <html>
 
-	<head>
-		<meta charset="UTF-8">
-		<title></title>
+<head>
+	<meta charset="UTF-8">
+	<title></title>
 
-		<link rel="stylesheet" href="css/amazeui.min.css">
-		<link rel="stylesheet" href="css/admin.css">
-		<link rel="stylesheet" href="css/app.css">
-	</head>
+	<link rel="stylesheet" href="css/amazeui.min.css">
+	<link rel="stylesheet" href="css/admin.css">
+	<link rel="stylesheet" href="css/app.css">
+</head>
 
-	<body>
+<body>
 
-		<div class="am-cf admin-main" >
-			<!-- content start -->
-			<div class="admin-content">
-				<div class="admin-content-body">
-					
-					<div class="container" style="padding: 50px 10px 0px 10px">
-						<div class="am-g">
-							<div class="am-u-sm-12 am-u-md-6">
-								<div class="am-btn-toolbar">
-									<div class="am-btn-group am-btn-group-xs">
-										<button type="button" class="am-btn am-btn-default search">
-											<span class="icon-plus"></span> 筛选即将过期合同
-										</button>
-									</div>
-								</div>
-							</div>
-							<div class="am-u-sm-12 am-u-md-3">
+<div class="am-cf admin-main" >
+	<!-- content start -->
+	<div class="admin-content">
+		<div class="admin-content-body">
 
-								<select id="selDepart" data-am-selected="{btnSize: 'sm'}" style="display: none;">
-									<option value="0">
-										请选择部门
-									</option>
-									<option value="14">
-										研发部
-									</option>
-									<option value="22">
-										市场部
-									</option>
-								</select>
-								<div class="am-selected am-dropdown " id="am-selected-dhh2q" data-am-dropdown=""> <button type="button" class="am-selected-btn am-btn am-dropdown-toggle am-btn-sm am-btn-default">    <span class="am-selected-status am-fl">请选择部门</span>    <i class="am-selected-icon am-icon-caret-down"></i>  </button>
-									<div class="am-selected-content am-dropdown-content">
-										<h2 class="am-selected-header"><span class="am-icon-chevron-left">返回</span></h2>
-										<ul class="am-selected-list">
-											<li class="am-checked" data-index="0" data-group="0" data-value="0"> <span class="am-selected-text">请选择部门</span> <i class="am-icon-check"></i></li>
-											<li class="" data-index="1" data-group="0" data-value="14"> <span class="am-selected-text">研发部</span> <i class="am-icon-check"></i></li>
-
-										</ul>
-										<div class="am-selected-hint"></div>
-									</div>
-								</div>
-								<div class="am-selected am-dropdown " id="am-selected-z6ofo" data-am-dropdown="">
-									<button style="display: none;" type="button" class="am-selected-btn am-btn am-dropdown-toggle am-btn-sm am-btn-default">
-										<span class="am-selected-status am-fl">请选择部门</span>
-										<i class="am-selected-icon am-icon-caret-down"></i>
-									</button>
-									<div class="am-selected-content am-dropdown-content">
-										<h2 class="am-selected-header">
-											<span class="am-icon-chevron-left">返回</span>
-										</h2>
-										<ul class="am-selected-list">
-											<li class="am-checked" data-index="0" data-group="0" data-value="option1">
-												<span class="am-selected-text">请选择部门</span>
-												<i class="am-icon-check"></i>
-											</li>
-
-											<li class="" data-index="1" data-group="0" data-value="option2">
-												<span class="am-selected-text">研发部</span>
-												<i class="am-icon-check"></i>
-											</li>
-
-											<li class="" data-index="1" data-group="0" data-value="option2">
-												<span class="am-selected-text">市场部</span>
-												<i class="am-icon-check"></i>
-											</li>
-
-											<li class="" data-index="1" data-group="0" data-value="option2">
-												<span class="am-selected-text">渠道一部</span>
-												<i class="am-icon-check"></i>
-											</li>
-
-											<li class="" data-index="1" data-group="0" data-value="option2">
-												<span class="am-selected-text">教学部</span>
-												<i class="am-icon-check"></i>
-											</li>
-
-											<li class="" data-index="1" data-group="0" data-value="option2">
-												<span class="am-selected-text">教务部</span>
-												<i class="am-icon-check"></i>
-											</li>
-
-											<li class="" data-index="1" data-group="0" data-value="option2">
-												<span class="am-selected-text">渠道二部</span>
-												<i class="am-icon-check"></i>
-											</li>
-
-											<li class="" data-index="1" data-group="0" data-value="option2">
-												<span class="am-selected-text">渠道三部</span>
-												<i class="am-icon-check"></i>
-											</li>
-
-										</ul>
-										<div class="am-selected-hint"></div>
-									</div>
-								</div>
-							</div>
-
-							<div class="am-u-sm-12 am-u-md-3">
-								<div class="am-input-group am-input-group-sm">
-									<input class="am-form-field" placeholder="请输入员工姓名" id="username" type="text">
-									<span class="am-input-group-btn">
-										<button class="am-btn am-btn-default" type="button" id="btnsearch">
-											搜索
-										</button> </span>
-								</div>
+			<div class="container" style="padding: 50px 10px 0px 10px">
+				<div class="am-g">
+					<div class="am-u-sm-12 am-u-md-6">
+						<div class="am-btn-toolbar">
+							<div class="am-btn-group am-btn-group-xs">
+								<button type="button" class="am-btn am-btn-default search">
+									<span class="icon-plus"></span> 筛选即将过期合同
+								</button>
 							</div>
 						</div>
-						<div class="am-g" style="margin-top: -30px;">
-							<div class="am-u-sm-12">
-								<form class="am-form" action="user/delAll.action">
-									<table class="am-table am-table-striped am-table-hover table-main">
-										<thead>
-											<tr>
-												<th class="table-check">
-													<input id="chkAll" type="checkbox">
-												</th>
-												<th class="table-id">
-													ID
-												</th>
-												<th>
-													姓名
-												</th>
-												<th>
-													艺名
-												</th>
-												<th>
-													签约起始日期
-												</th>
-												<th>
-													到期日期
-												</th>
-												<th>
-													电话号
-												</th>
-												<th>
-													纸质是否归档
-												</th>
-												<th>
-													附件管理
-												</th>
-												<th class="table-set">
-													操作
-												</th>
-											</tr>
-										</thead>
-										<tbody id="tUser">
-											<tr>
-												<td><input name="ids" value="1" type="checkbox"></td>
-												<td>1</td>
-												<td>admin</td>
-												<td>
-													<a href="#">张三</a>
-												</td>
-												<td><span class="am-badge am-badge-secondary">男</span></td>
-												<td>开发部</td>
-												<td>2332@qq.com</td>
-												<td>
-													<div class="am-btn-toolbar">
-														<div class="am-btn-group am-btn-group-xs"><button type="button" class="am-btn am-btn-default am-btn-xs am-text-secondary btnEdit"><span class="am-icon-pencil-square-o"></span> 编辑</button><button type="button" class="am-btn am-btn-default am-btn-xs am-text-danger am-hide-sm-only" onclick="delUser(1,1)"><span class="am-icon-trash-o"></span> 删除</button></div>
-													</div>
-												</td>
-											</tr>
-										</tbody>
-									</table>
+					</div>
+					<div class="am-u-sm-12 am-u-md-3">
 
-								</form>
+						<select id="selDepart" data-am-selected="{btnSize: 'sm'}" style="display: none;">
+							<option value="0">
+								请选择部门
+							</option>
+							<option value="14">
+								研发部
+							</option>
+							<option value="22">
+								市场部
+							</option>
+						</select>
+						<div class="am-selected am-dropdown " id="am-selected-dhh2q" data-am-dropdown=""> <button type="button" class="am-selected-btn am-btn am-dropdown-toggle am-btn-sm am-btn-default">    <span class="am-selected-status am-fl">请选择部门</span>    <i class="am-selected-icon am-icon-caret-down"></i>  </button>
+							<div class="am-selected-content am-dropdown-content">
+								<h2 class="am-selected-header"><span class="am-icon-chevron-left">返回</span></h2>
+								<ul class="am-selected-list">
+									<li class="am-checked" data-index="0" data-group="0" data-value="0"> <span class="am-selected-text">请选择部门</span> <i class="am-icon-check"></i></li>
+									<li class="" data-index="1" data-group="0" data-value="14"> <span class="am-selected-text">研发部</span> <i class="am-icon-check"></i></li>
+
+								</ul>
+								<div class="am-selected-hint"></div>
+							</div>
+						</div>
+						<div class="am-selected am-dropdown " id="am-selected-z6ofo" data-am-dropdown="">
+							<button style="display: none;" type="button" class="am-selected-btn am-btn am-dropdown-toggle am-btn-sm am-btn-default">
+								<span class="am-selected-status am-fl">请选择部门</span>
+								<i class="am-selected-icon am-icon-caret-down"></i>
+							</button>
+							<div class="am-selected-content am-dropdown-content">
+								<h2 class="am-selected-header">
+									<span class="am-icon-chevron-left">返回</span>
+								</h2>
+								<ul class="am-selected-list">
+									<li class="am-checked" data-index="0" data-group="0" data-value="option1">
+										<span class="am-selected-text">请选择部门</span>
+										<i class="am-icon-check"></i>
+									</li>
+
+									<li class="" data-index="1" data-group="0" data-value="option2">
+										<span class="am-selected-text">研发部</span>
+										<i class="am-icon-check"></i>
+									</li>
+
+									<li class="" data-index="1" data-group="0" data-value="option2">
+										<span class="am-selected-text">市场部</span>
+										<i class="am-icon-check"></i>
+									</li>
+
+									<li class="" data-index="1" data-group="0" data-value="option2">
+										<span class="am-selected-text">渠道一部</span>
+										<i class="am-icon-check"></i>
+									</li>
+
+									<li class="" data-index="1" data-group="0" data-value="option2">
+										<span class="am-selected-text">教学部</span>
+										<i class="am-icon-check"></i>
+									</li>
+
+									<li class="" data-index="1" data-group="0" data-value="option2">
+										<span class="am-selected-text">教务部</span>
+										<i class="am-icon-check"></i>
+									</li>
+
+									<li class="" data-index="1" data-group="0" data-value="option2">
+										<span class="am-selected-text">渠道二部</span>
+										<i class="am-icon-check"></i>
+									</li>
+
+									<li class="" data-index="1" data-group="0" data-value="option2">
+										<span class="am-selected-text">渠道三部</span>
+										<i class="am-icon-check"></i>
+									</li>
+
+								</ul>
+								<div class="am-selected-hint"></div>
 							</div>
 						</div>
 					</div>
 
+					<div class="am-u-sm-12 am-u-md-3">
+						<div class="am-input-group am-input-group-sm">
+							<input class="am-form-field" placeholder="请输入员工姓名" id="username" type="text">
+							<span class="am-input-group-btn">
+										<button class="am-btn am-btn-default" type="button" id="btnsearch">
+											搜索
+										</button> </span>
+						</div>
+					</div>
 				</div>
-				<!-- content end -->
-			</div>
-		</div>
+				<div class="am-g" style="margin-top: -30px;">
+					<div class="am-u-sm-12">
+						<form class="am-form" action="user/delAll.action">
+							<table class="am-table am-table-striped am-table-hover table-main">
+								<thead>
+								<tr>
+									<th class="table-check">
+										<input id="chkAll" type="checkbox">
+									</th>
+									<th class="table-id">
+										ID
+									</th>
+									<th>
+										姓名
+									</th>
+									<th>
+										艺名
+									</th>
+									<th>
+										签约起始日期
+									</th>
+									<th>
+										到期日期
+									</th>
+									<th>
+										电话号
+									</th>
+									<th>
+										纸质是否归档
+									</th>
+									<th>
+										附件管理
+									</th>
 
-		<!--[if lt IE 9]>
+								</tr>
+								</thead>
+								<tbody id="tUser">
+								<tr>
+									<td><input name="ids" value="1" type="checkbox"></td>
+									<td>1</td>
+									<td>admin</td>
+									<td>
+										<a href="#">张三</a>
+									</td>
+									<td><span class="am-badge am-badge-secondary">男</span></td>
+									<td>开发部</td>
+									<td>2332@qq.com</td>
+									<td>
+										<div class="am-btn-toolbar">
+											<div class="am-btn-group am-btn-group-xs"><button type="button" class="am-btn am-btn-default am-btn-xs am-text-secondary btnEdit"><span class="am-icon-pencil-square-o"></span> 编辑</button><button type="button" class="am-btn am-btn-default am-btn-xs am-text-danger am-hide-sm-only" onclick="delUser(1,1)"><span class="am-icon-trash-o"></span> 删除</button></div>
+										</div>
+									</td>
+								</tr>
+								</tbody>
+							</table>
+
+						</form>
+					</div>
+				</div>
+			</div>
+
+		</div>
+		<!-- content end -->
+		<div class="yema">
+			<a href="/yirenjingji?pageNum=1">首页</a>
+			<a id="prePage" href="#">上一页</a>
+			<input type="text" onkeyup="this.value=this.value.replace(/\D/g,'')"
+				   onafterpaste="this.value=this.value.replace(/\D/g,'')" id="pageNums" style="width: 30px;height: 20px">/47</input>
+			<a id="pageJump">跳转</a>
+			<a id="nextPage" href="#">下一页</a>
+			<a href="/showAnchor?pageNum=47">尾页</a>
+		</div>
+	</div>
+</div>
+
+<!--[if lt IE 9]>
 <script src="http://libs.baidu.com/jquery/1.11.3/jquery.min.js"></script>
 <script src="http://cdn.staticfile.org/modernizr/2.8.3/modernizr.js"></script>
 <script src="assets/js/amazeui.ie8polyfill.min.js"></script>
 <![endif]-->
 
-		<!--[if (gte IE 9)|!(IE)]><!-->
-		<script src="js/jquery-1.11.3.min.js"></script>
-		<!--<![endif]-->
-		<script type="text/javascript" src="myplugs/js/plugs.js"></script>
-		<script>
-			$(function() {
-                $.ajax({
-                    type: "POST",
-                    url: "/yirenjingji",
-                    dataType: "json",
-                    success: function (data) {
+<!--[if (gte IE 9)|!(IE)]><!-->
+<script src="js/jquery-1.11.3.min.js"></script>
+<!--<![endif]-->
+<script type="text/javascript" src="myplugs/js/plugs.js"></script>
+<script type="text/javascript" src="js/myajax.js"></script>
+<script type="text/javascript" src="js/pageinfo.js"></script>
+<script>
+    $(function() {
+        myajax_c("yirenjingji?pageNum=1","GET")
+        $(".search").click(function() {
+            $.ajax({
+                type: "POST",
+                url: "/yirenjingji_search",
+                dataType: "json",
+                success: function (data) {
+                    console.log(data);
+                    var dataObj = data;
+                    con = "";
 
-                        var dataObj = data;
-                        con = "";
+                    $.each(dataObj, function(index, item){
+                        var toFile = '否';
+                        if(item.tofile == 1){
+                            toFile = '是';
+                        }else{
+                            toFile;
+                        }
+                        con += "<tr>" +
+                            "<td><input name=\"ids\" value=\"1\" type=\"checkbox\"></td>" +
+                            "<td>"+item.id+"</td>" +
+                            "<td>"+item.aName+"</td><td>" +
+                            ""+item.stageName+"</td>" +
+                            "<td>"+item.fromtime+"</td>" +
+                            "<td>"+item.totime+"</td>" +
+                            "<td>"+item.tel+"</td>" +
+                            "<td>"+toFile+"</td>" +
+                            "<td><div class=\"am-btn-toolbar\"><div class=\"am-btn-group am-btn-group-xs\"><button id='file' data-id='"+item.id+"  data-name='"+item.filehost+"' type=\"button\" class=\"file am-btn am-btn-default am-btn-xs am-text-secondary btnEdit\"><span class=\"am-icon-pencil-square-o\"></span> 操作</button></div></div></td></tr>"
+                        //"<td><div class=\"am-btn-toolbar\"><div class=\"am-btn-group am-btn-group-xs\"><button type=\"button\" class=\"am-btn am-btn-default am-btn-xs am-text-secondary btnEdit\"><span class=\"am-icon-pencil-square-o\"></span> 编辑</button></div></div></td></tr>"
+                    });
+                    $("#tUser").html(con);
 
-                        $.each(dataObj, function(index, item){
-                            var toFile = '否';
-                            if(item.tofile == 1){
-                               toFile = '是';
-                            }else{
-                                toFile;
-                            }
-                            con += "<tr>" +
-                                "<td><input name=\"ids\" value=\"1\" type=\"checkbox\"></td>" +
-                                "<td>"+item.id+"</td>" +
-                                "<td>"+item.aName+"</td><td>" +
-                                ""+item.stageName+"</td>" +
-                                "<td>"+item.fromtime+"</td>" +
-                                "<td>"+item.totime+"</td>" +
-                                "<td>"+item.tel+"</td>" +
-                                "<td>"+toFile+"</td>" +
-                                "<td><div class=\"am-btn-toolbar\"><div class=\"am-btn-group am-btn-group-xs\"><form method=\"POST\" enctype=\"multipart/form-data\" action=\"ArtistBrokerageContract_upload\"><input type=\"file\" name=\"file\" style=\"width: 230px;height: 25px;\"/><input type=\"submit\" value=\"上传\" style=\"background:#df3834;\"></form><button type=\"button\" data-name="+item.filehost+" class=\"am-btn am-btn-default am-btn-xs am-text-danger am-hide-sm-only down\"><span class=\"am-icon-trash-o\"></span> 下载</button></div></div></td>" +
-                                "<td><div class=\"am-btn-toolbar\"><div class=\"am-btn-group am-btn-group-xs\"><button type=\"button\" class=\"am-btn am-btn-default am-btn-xs am-text-secondary btnEdit\"><span class=\"am-icon-pencil-square-o\"></span> 编辑</button></div></div></td></tr>"
+                    $(".file").click(function () {
+                        var fileHost = $("#file").attr("data-name");
+                        var id = $("#file").attr("data-id");
+                        console.log(fileHost);
+                        $.jq_Panel({
+                            title: "添加角色",
+                            iframeWidth: 500,
+                            iframeHeight: 300,
+                            content: '<div class="am-btn-toolbar">' +
+                            '<div class="am-btn-group am-btn-group-xs">' +
+                            '<form method="POST" enctype="multipart/form-data" action="/yirenjingji_upload">' +
+                            '<input type="file" name="file" style="width: 230px;height: 25px;"/>' +
+                            '<input type="submit" value="上传" style="background:#df3834;">' +
+                            '<input type="hidden" name="id" value="+'+fileHost+'+" >' +
+                            '</form>' +
+                            '<button type="button" data-name="'+fileHost+'" class="am-btn am-btn-default am-btn-xs am-text-danger am-hide-sm-only down">' +
+                            '<span class="am-icon-trash-o">' +
+                            '</span> 下载' + '</button></div></div>\n'
                         });
-						$("#tUser").html(con);
                         $(".down").click(function () {
                             var fileName=($(this).attr("data-name"));
                             window.location.href="/fileDownLoad_artist_brokerage.action?fileName="+fileName;
                         });
-                        /*$(".down").click(function() {
-                            var a=($(this).attr("data-name"));
-                            $.ajax({
-                                type: "GET",
-                                url: "/fileDownLoad_artist_brokerage.action",
-                                data:a,
-                                dataType: "json",
-                                success:function () {
-                                }
-                            });
-                        });*/
-                    }
-                });
-				$(".search").click(function() {
-					$.ajax({
-                        type: "POST",
-                        url: "/yirenjingji_search",
-                        dataType: "json",
-                        success: function (data) {
-                            console.log(data);
-                            var dataObj = data;
-                            con = "";
+                    });
+                }
+            });
+        });
+        getpage('yirenjingji',47)
+        //TODO 筛选之后的分页处理
 
-                            $.each(dataObj, function(index, item){
-                                var toFile = '否';
-                                if(item.tofile == 1){
-                                    toFile = '是';
-                                }else{
-                                    toFile;
-                                }
-                                con += "<tr>" +
-                                    "<td><input name=\"ids\" value=\"1\" type=\"checkbox\"></td>" +
-                                    "<td>"+item.id+"</td>" +
-                                    "<td>"+item.aName+"</td><td>" +
-                                    ""+item.stageName+"</td>" +
-                                    "<td>"+item.fromtime+"</td>" +
-                                    "<td>"+item.totime+"</td>" +
-                                    "<td>"+item.tel+"</td>" +
-                                    "<td>"+toFile+"</td>" +
-                                    "<td><div class=\"am-btn-toolbar\"><div class=\"am-btn-group am-btn-group-xs\"><form method=\"POST\" enctype=\"multipart/form-data\" action=\"ArtistBrokerageContract_upload\"><input type=\"file\" name=\"file\" style=\"width: 230px;height: 25px;\"/><input type=\"submit\" value=\"上传\" style=\"background:#df3834;\"></form><button type=\"button\" data-name="+item.filehost+" class=\"am-btn am-btn-default am-btn-xs am-text-danger am-hide-sm-only down\"><span class=\"am-icon-trash-o\"></span> 下载</button></div></div></td>" +
-                                    "<td><div class=\"am-btn-toolbar\"><div class=\"am-btn-group am-btn-group-xs\"><button type=\"button\" class=\"am-btn am-btn-default am-btn-xs am-text-secondary btnEdit\"><span class=\"am-icon-pencil-square-o\"></span> 编辑</button></div></div></td></tr>"
-                            });
-                            $("#tUser").html(con);
-                            $(".down").click(function() {
-                                var a=($(this).attr("data-name"));
-                                $.ajax({
-                                    type: "GET",
-                                    url: "/fileDownLoad_artist_brokerage.action",
-                                    data:a,
-                                    dataType: "json",
-                                    success:function () {
-                                    }
-                                });
-                            });
-                        }
-					});
-				});
-
-				$(".btnEdit").click(function() {
-					$.jq_Panel({
-						title: "编辑用户",
-						url: "addUser.html",
-						iframeWidth: 800,
-						iframeHeight: 600,
-					});
-
-				});
-
-			});
-		</script>
-	</body>
+    });
+</script>
+</body>
 
 </html>

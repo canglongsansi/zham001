@@ -30,6 +30,7 @@ public interface CommentatorContractMapper {
             "filehost, tofile, created_time, updated_time",
             "from commentator_contract"
     })
+    //TODO update the result and add the filehost can reslove the problem
     @Results({
             @Result(column="id", property="id", jdbcType=JdbcType.INTEGER, id=true),
             @Result(column="b_name", property="bName", jdbcType=JdbcType.VARCHAR),
@@ -59,7 +60,7 @@ public interface CommentatorContractMapper {
             "select",
             "id,fromtime, totime, a_name,address, tel, stage_name, filehost",
             "tofile,created_time, updated_time",
-            "from artiste_supply_contract",
+            "from commentator_contract",
             "where (to_days(totime) - to_days(now())) < 30"
     })
     @Results({

@@ -14,6 +14,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
@@ -85,9 +87,11 @@ public class UploadController {
                     "</script>");
         }
     }
-    @RequestMapping("/CommentatorContract_upload")
+    @RequestMapping(value = "/CommentatorContract_upload",method = RequestMethod.POST)
     @ResponseBody
-    public void CommentatorContractUpLoadFile(MultipartFile file,int id, HttpServletResponse httpResponse) throws IllegalStateException, IOException {
+    public void CommentatorContractUpLoadFile(MultipartFile file,
+                                              @RequestParam("id") int id,
+                                              HttpServletResponse httpResponse) throws IllegalStateException, IOException {
         BufferedOutputStream stream = null;
         CommentatorContract commentatorContract=new CommentatorContract();
         if (!file.isEmpty()) {
