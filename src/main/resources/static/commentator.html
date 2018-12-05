@@ -194,6 +194,7 @@
 <script type="text/javascript" src="js/myajax.js"></script>
 <script type="text/javascript" src="js/pageinfo.js"></script>
 <script>
+    //TODO the must updated
     $(function() {
         myajax_c("CommentatorContract?pageNum=1","GET")
         $(".search").click(function() {
@@ -201,6 +202,11 @@
                 type: "POST",
                 url: "/CommentatorContract_search",
                 dataType: "json",
+                statusCode:{
+                    400:function () {
+                        $(window).attr('location','/error.html');
+                    }
+                },
                 success: function (data) {
                     console.log(data);
                     var dataObj = data;

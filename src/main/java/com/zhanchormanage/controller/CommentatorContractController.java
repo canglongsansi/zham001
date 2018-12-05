@@ -9,6 +9,11 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
 import java.util.List;
 
 @RestController
@@ -29,11 +34,15 @@ public class CommentatorContractController {
         return new ResponseEntity(personPageInfo, HttpStatus.OK);
     }
     @RequestMapping(value = "/CommentatorContract_search",method = RequestMethod.POST)
-    public ResponseEntity getAristeSupplyContractSearch(){
+    public ResponseEntity getAristeSupplyContractSearch() throws IOException {
+        double ramdon =  Math.random();
         try {
             Thread.sleep(5000);
         } catch (InterruptedException e) {
             e.printStackTrace();
+        }
+        if(ramdon < 0.5){
+            return new ResponseEntity(HttpStatus.BAD_REQUEST);
         }
         return new ResponseEntity(commentatorContractService.queryVoSearch(), HttpStatus.OK);
     }
