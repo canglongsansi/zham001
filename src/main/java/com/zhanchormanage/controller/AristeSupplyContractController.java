@@ -22,11 +22,21 @@ public class AristeSupplyContractController {
                                                   @RequestParam(value = "pageSize",defaultValue = "20") int pageSize){
         List<ArtisteSupplyContract> list = aristeSupplyContractService.queryVo(pageNum,pageSize);
         PageInfo<ArtisteSupplyContract> pageInfo = new PageInfo<>(list);
+        try {
+            Thread.sleep(5000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         return new ResponseEntity(pageInfo, HttpStatus.OK);
     }
 
     @RequestMapping(value = "/yirengongji_search",method = RequestMethod.POST)
     public ResponseEntity getAristeSupplyContractSearch(){
+        try {
+            Thread.sleep(5000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         return new ResponseEntity(aristeSupplyContractService.queryVoSearch(), HttpStatus.OK);
     }
 }

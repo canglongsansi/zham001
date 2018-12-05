@@ -21,10 +21,20 @@ public class CommentatorContractController {
                                                  @RequestParam(value = "pageSize",defaultValue = "20") int pageSize){
         List<CommentatorContract> list = commentatorContractService.queryVo(pageNum,pageSize);
         PageInfo<CommentatorContract> personPageInfo = new PageInfo<>(list);
+        try {
+            Thread.sleep(5000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         return new ResponseEntity(personPageInfo, HttpStatus.OK);
     }
     @RequestMapping(value = "/CommentatorContract_search",method = RequestMethod.POST)
     public ResponseEntity getAristeSupplyContractSearch(){
+        try {
+            Thread.sleep(5000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         return new ResponseEntity(commentatorContractService.queryVoSearch(), HttpStatus.OK);
     }
 }

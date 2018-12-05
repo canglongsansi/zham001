@@ -21,10 +21,20 @@ public class ArtistBrokerageContractController {
                                                      @RequestParam(value = "pageSize",defaultValue = "20") int pageSize){
         List<ArtistBrokerageContract> list = artistBrokerageContractService.queryVo(pageNum,pageSize);
         PageInfo<ArtistBrokerageContract> pageInfo  = new PageInfo<>(list);
+        try {
+            Thread.sleep(5000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         return new ResponseEntity(pageInfo, HttpStatus.OK);
     }
     @RequestMapping(value = "/yirenjingjii_search",method = RequestMethod.POST)
     public ResponseEntity getAristeSupplyContractSearch(){
+        try {
+            Thread.sleep(5000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         return new ResponseEntity(artistBrokerageContractService.queryVoSearch(), HttpStatus.OK);
     }
 }

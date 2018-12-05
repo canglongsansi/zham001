@@ -20,10 +20,20 @@ public class ThreePartyContractController {
                                                 @RequestParam(value = "pageSiez",defaultValue = "20") int pageSize){
         List<ThreePartyContract> list = threePartyContractService.queryVo(pageNum,pageSize);
         PageInfo<ThreePartyContract> pageInfo = new PageInfo<>(list);
+        try {
+            Thread.sleep(5000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         return new ResponseEntity(pageInfo, HttpStatus.OK);
     }
     @RequestMapping(value = "/ThreePartyContract_search",method = RequestMethod.POST)
     public ResponseEntity getAristeSupplyContractSearch(){
+        try {
+            Thread.sleep(5000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         return new ResponseEntity(threePartyContractService.queryVoSearch(), HttpStatus.OK);
     }
 }
