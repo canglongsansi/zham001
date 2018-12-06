@@ -33,4 +33,4 @@ pagehelper:
 
 logging:
    level:
-     com.zhkj.demo.mapper: DEBUG
+     com.zhanchormanage.mapper: DEBUG

@@ -1,4 +1,4 @@
-function myajax_c(url,type){
+function myajax_c(url,type,url_upload,url_download){
     $.ajax({
         type: type,
         url: url,
@@ -39,7 +39,7 @@ function myajax_c(url,type){
                     iframeHeight: 300,
                     content: '<div class="am-btn-toolbar">' +
                         '<div class="am-btn-group am-btn-group-xs">' +
-                        '<form method="POST" enctype="multipart/form-data" action="/CommentatorContract_upload">' +
+                        '<form method="POST" enctype="multipart/form-data" action="'+url_upload+'">' +
                         '<input type="file" name="file" style="width: 230px;height: 25px;"/>' +
                         '<input type="submit" value="上传" style="background:#df3834;">' +
                         '<input type="hidden" name="id" value="'+id+'" >' +
@@ -50,7 +50,7 @@ function myajax_c(url,type){
                 });
                 $(".down").click(function () {
                     var fileName=($(this).attr("data-name"));
-                    window.location.href="/fileDownLoad_commentator.action?fileName="+fileName;
+                    window.location.href=url_download+"?fileName="+fileName;
                 });
             });
         }

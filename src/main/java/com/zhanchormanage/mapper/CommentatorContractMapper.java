@@ -58,8 +58,8 @@ public interface CommentatorContractMapper {
 
     @Select({
             "select",
-            "id,fromtime, totime, a_name,address, tel, stage_name, filehost",
-            "tofile,created_time, updated_time",
+            "id,fromtime, totime, a_name, address, tel, stage_name, filehost",
+            "tofile, created_time, updated_time",
             "from commentator_contract",
             "where (to_days(totime) - to_days(now())) < 30"
     })

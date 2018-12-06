@@ -196,7 +196,7 @@
 <script>
     //TODO the must updated
     $(function() {
-        myajax_c("CommentatorContract?pageNum=1","GET")
+        myajax_c("CommentatorContract?pageNum=1","GET","CommentatorContract_upload","fileDownLoad_commentator.action")
         $(".search").click(function() {
             $.ajax({
                 type: "POST",

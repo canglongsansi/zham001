@@ -92,6 +92,7 @@ public interface ArtistBrokerageContractMapper {
             @Result(column="address", property="address", jdbcType=JdbcType.VARCHAR),
             @Result(column="tel", property="tel", jdbcType=JdbcType.VARCHAR),
             @Result(column="stage_name", property="stageName", jdbcType=JdbcType.VARCHAR),
+            @Result(column="filehost", property="filehost", jdbcType=JdbcType.VARCHAR),
             @Result(column="tofile", property="tofile", jdbcType=JdbcType.INTEGER),
             @Result(column="created_time", property="createdTime", jdbcType=JdbcType.TIMESTAMP),
             @Result(column="updated_time", property="updatedTime", jdbcType=JdbcType.TIMESTAMP)
