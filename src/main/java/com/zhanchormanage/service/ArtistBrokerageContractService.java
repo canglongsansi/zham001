@@ -22,4 +22,7 @@ public class ArtistBrokerageContractService {
     public void updateFilehost(ArtistBrokerageContract artistBrokerageContract){
         adao.updateByPrimaryKeySelective(artistBrokerageContract);
     }
+    public List<ArtistBrokerageContract> searchByname(String name){
+        return adao.searchByName(name);
+    }
 }

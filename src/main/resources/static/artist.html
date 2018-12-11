@@ -195,6 +195,9 @@
 <script type="text/javascript" src="js/pageinfo.js"></script>
 <script>
     $(function() {
+		$("#btnsearch").on("click",function(){
+			searchName("brokerageSearchByName",$("#username").val(),"POST","ArtistBrokerageContract_upload","fileDownLoad_artist_brokerage.action")
+		})
         myajax_c("yirenjingji?pageNum=1","GET","ArtistBrokerageContract_upload","fileDownLoad_artist_brokerage.action")
         $(".search").click(function() {
             $.ajax({

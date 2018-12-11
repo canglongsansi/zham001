@@ -22,4 +22,7 @@ public class ThreePartyContractService {
     public void updateFilehost(ThreePartyContract threePartyContract){
         tdao.updateByPrimaryKeySelective(threePartyContract);
     }
+    public List<ThreePartyContract> searchByname(String name){
+        return tdao.searchByName(name);
+    }
 }

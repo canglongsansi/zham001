@@ -39,4 +39,8 @@ public class AristeSupplyContractController {
         }
         return new ResponseEntity(aristeSupplyContractService.queryVoSearch(), HttpStatus.OK);
     }
+    @RequestMapping(value = "/supplySearchByName",method = RequestMethod.POST)
+    public ResponseEntity searchByname(@RequestParam String name){
+        return new ResponseEntity(aristeSupplyContractService.searchByname(name),HttpStatus.OK);
+    }
 }

@@ -46,4 +46,8 @@ public class CommentatorContractController {
         }
         return new ResponseEntity(commentatorContractService.queryVoSearch(), HttpStatus.OK);
     }
+    @RequestMapping(value = "/commentSearchByName",method = RequestMethod.POST)
+    public ResponseEntity searchByname(@RequestParam String name){
+        return new ResponseEntity(commentatorContractService.searchByname(name),HttpStatus.OK);
+    }
 }

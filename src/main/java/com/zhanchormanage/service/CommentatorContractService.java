@@ -22,4 +22,7 @@ public class CommentatorContractService {
     public void updateFilehost(CommentatorContract commentatorContract){
         cdao.updateByPrimaryKeySelective(commentatorContract);
     }
+    public List<CommentatorContract> searchByname(String name){
+        return cdao.searchByName(name);
+    }
 }

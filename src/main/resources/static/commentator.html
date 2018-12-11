@@ -196,6 +196,9 @@
 <script>
     //TODO the must updated
     $(function() {
+		$("#btnsearch").on("click",function(){
+			searchName("commentSearchByName",$("#username").val(),"POST","CommentatorContract_upload","fileDownLoad_commentator.action")
+		})
         myajax_c("CommentatorContract?pageNum=1","GET","CommentatorContract_upload","fileDownLoad_commentator.action")
         $(".search").click(function() {
             $.ajax({

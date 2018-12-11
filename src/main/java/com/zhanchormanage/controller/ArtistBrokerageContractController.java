@@ -37,4 +37,8 @@ public class ArtistBrokerageContractController {
         }
         return new ResponseEntity(artistBrokerageContractService.queryVoSearch(), HttpStatus.OK);
     }
+    @RequestMapping(value = "/brokerageSearchByName",method = RequestMethod.POST)
+    public ResponseEntity searchByname(@RequestParam String name){
+        return new ResponseEntity(artistBrokerageContractService.searchByname(name),HttpStatus.OK);
+    }
 }

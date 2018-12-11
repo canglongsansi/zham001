@@ -23,4 +23,7 @@ public class AristeSupplyContractService {
         adao.updateByPrimaryKeySelective(artisteSupplyContract);
     }
     //addd
+    public List<ArtisteSupplyContract> searchByname(String name){
+        return adao.searchByName(name);
+    }
 }

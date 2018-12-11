@@ -36,4 +36,8 @@ public class ThreePartyContractController {
         }
         return new ResponseEntity(threePartyContractService.queryVoSearch(), HttpStatus.OK);
     }
+    @RequestMapping(value = "/threeSearchByName",method = RequestMethod.POST)
+    public ResponseEntity searchByname(@RequestParam String name){
+        return new ResponseEntity(threePartyContractService.searchByname(name),HttpStatus.OK);
+    }
 }

@@ -54,6 +54,41 @@ public interface ArtistBrokerageContractMapper {
     })
     List<ArtistBrokerageContract> queryVo();
 
+    @Select({
+            "<script>",
+            "select",
+            "id, b_name, fromtime, totime, blance, a_name, id_card, address, yy_number, tel, ",
+            "collection_account, householder, opening_bank, stage_name, effective_days, effective_hours, ",
+            "filehost, tofile, created_time, updated_time",
+            "from artiste_supply_contract",
+            "<if test='_parameter != null'>",
+            "where a_name like concat(concat('%',#{aname,jdbcType=VARCHAR}),'%')",
+            "</if>",
+            "</script>"
+    })
+    @Results({
+            @Result(column="id", property="id", jdbcType=JdbcType.INTEGER, id=true),
+            @Result(column="b_name", property="bName", jdbcType=JdbcType.VARCHAR),
+            @Result(column="fromtime", property="fromtime", jdbcType=JdbcType.TIMESTAMP),
+            @Result(column="totime", property="totime", jdbcType=JdbcType.TIMESTAMP),
+            @Result(column="blance", property="blance", jdbcType=JdbcType.VARCHAR),
+            @Result(column="a_name", property="aName", jdbcType=JdbcType.VARCHAR),
+            @Result(column="id_card", property="idCard", jdbcType=JdbcType.VARCHAR),
+            @Result(column="address", property="address", jdbcType=JdbcType.VARCHAR),
+            @Result(column="yy_number", property="yyNumber", jdbcType=JdbcType.INTEGER),
+            @Result(column="tel", property="tel", jdbcType=JdbcType.VARCHAR),
+            @Result(column="collection_account", property="collectionAccount", jdbcType=JdbcType.VARCHAR),
+            @Result(column="householder", property="householder", jdbcType=JdbcType.VARCHAR),
+            @Result(column="opening_bank", property="openingBank", jdbcType=JdbcType.VARCHAR),
+            @Result(column="stage_name", property="stageName", jdbcType=JdbcType.VARCHAR),
+            @Result(column="effective_days", property="effectiveDays", jdbcType=JdbcType.INTEGER),
+            @Result(column="effective_hours", property="effectiveHours", jdbcType=JdbcType.INTEGER),
+            @Result(column="filehost", property="filehost", jdbcType=JdbcType.VARCHAR),
+            @Result(column="tofile", property="tofile", jdbcType=JdbcType.INTEGER),
+            @Result(column="created_time", property="createdTime", jdbcType=JdbcType.TIMESTAMP),
+            @Result(column="updated_time", property="updatedTime", jdbcType=JdbcType.TIMESTAMP)
+    })
+    List<ArtistBrokerageContract> searchByName(String aname);
 
     @Select({
             "select",

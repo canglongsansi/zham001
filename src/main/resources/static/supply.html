@@ -195,6 +195,9 @@
 <script type="text/javascript" src="js/pageinfo.js"></script>
 <script>
     $(function() {
+		$("#btnsearch").on("click",function(){
+			searchName("supplySearchByName",$("#username").val(),"POST","AristeSupplyContract_upload","fileDownLoad_artiste_supply.action")
+		})
         myajax_c("yirengongji?pageNum=1","GET","AristeSupplyContract_upload","fileDownLoad_artiste_supply.action")
         $(".search").click(function() {
             $.ajax({

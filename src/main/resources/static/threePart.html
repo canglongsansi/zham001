@@ -195,6 +195,9 @@
 <script type="text/javascript" src="js/pageinfo.js"></script>
 <script>
     $(function() {
+		$("#btnsearch").on("click",function(){
+			searchName("threeSearchByName",$("#username").val(),"POST","ThreePartyContract_upload","fileDownLoad_three_party_contract.action")
+		})
         myajax_c("ThreePartyContract?pageNum=1","GET","ThreePartyContract_upload","fileDownLoad_three_party_contract.action");
         $(".search").click(function() {
             $.ajax({
